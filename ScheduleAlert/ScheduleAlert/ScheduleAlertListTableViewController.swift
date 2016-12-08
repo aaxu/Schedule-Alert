@@ -105,6 +105,7 @@ class ScheduleAlertListTableViewController: UITableViewController, UNUserNotific
         notification.sound = UNNotificationSound(named: (ringtone.1) + ".caf")
         notification.categoryIdentifier = "general"
         let event = Event(eventName: title!, eventDetails: details!, hours: hours, minutes: minutes, PM: PM, days: days, ringtone: ringtone, notification: notification, eventDetailsEmpty: eventDetailsEmpty, eventON: eventON)
+        notification.userInfo = ["minutes":event.minutes]
         ScheduleAlertListTableViewController.prepareNotifications(event:event)
         if (editingCellIndex == -1) {
             listOfEvents.events.append(event)
@@ -123,6 +124,8 @@ class ScheduleAlertListTableViewController: UITableViewController, UNUserNotific
             var temp = Int(event.hours)
             if (event.PM == "PM" && temp != 12) {
                 temp = temp! + 12
+            } else if (event.PM == "AM" && temp == 12) {
+                temp = 0
             }
             dateInfo.hour = temp
             dateInfo.minute = Int(event.minutes)
@@ -134,8 +137,40 @@ class ScheduleAlertListTableViewController: UITableViewController, UNUserNotific
             let request = UNNotificationRequest(identifier: (event.eventName.text!) + (event.eventDetails.text!) + String(x), content: event.notification, trigger: trigger)
             
             //Schedules notification
+
             
             UNUserNotificationCenter.current().add(request) { (error : Error?) in
+                if let theError = error {
+                    print(theError.localizedDescription)
+                }
+            }
+            
+            //Creates 30 min warning alert
+            var newMinute = dateInfo.minute! - 30
+            var newHour = dateInfo.hour!
+            var newWeekday = dateInfo.weekday!
+            if (dateInfo.minute! < 30) {
+                newMinute = newMinute + 60
+                newHour = newHour - 1
+                if (dateInfo.hour == 0) {
+                    newHour = newHour + 24
+                    newWeekday = newWeekday - 1
+                    if (dateInfo.weekday == 1) {
+                        newWeekday = newWeekday + 7
+                    }
+                }
+            }
+            dateInfo.hour = newHour
+            dateInfo.minute = newMinute
+            dateInfo.weekday = newWeekday
+            
+            let warningTrigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+            //            let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 10.0, repeats: false)
+            
+            // Create the request object.
+            let warningRequest = UNNotificationRequest(identifier: (event.eventName.text!) + (event.eventDetails.text!) + String(x) + "warning", content: event.notification, trigger: warningTrigger)
+            
+            UNUserNotificationCenter.current().add(warningRequest) { (error : Error?) in
                 if let theError = error {
                     print(theError.localizedDescription)
                 }
@@ -206,12 +241,59 @@ class ScheduleAlertListTableViewController: UITableViewController, UNUserNotific
             let deletedEvent = listOfEvents.events[indexPath.row]
             for x in 1...7 {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(deletedEvent.eventName.text!) + (deletedEvent.eventDetails.text)! + String(x)])
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(deletedEvent.eventName.text!) + (deletedEvent.eventDetails.text)! + String(x) + "warning"])
             }
             listOfEvents.events.remove(at: indexPath.row)
             editingCellIndex = -1
             self.tableView.reloadData()
         }
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.notification.request.content.categoryIdentifier == "general" {
+            // Handle the actions for the expired timer.
+            if response.actionIdentifier == "REMIND_LATER" {
+                // Invalidate the old timer and create a new one. . .
+                let notification = response.notification.request.content
+                let identifier = response.notification.request.identifier
+                let eventMinutes = notification.userInfo["minutes"] as! String
+                let date = NSDate()
+                let calender = NSCalendar.current
+                let components = calender.dateComponents([.hour, .minute, .weekday], from: date as Date)
+                var hr = components.hour
+                var min = components.minute
+                if (abs(Int(eventMinutes)! - min!) >= 5) {
+                    var dateInfo = DateComponents()
+                    min = min! + 5
+                    if (min! >= 60) {
+                        min = min! - 60
+                        hr = hr! + 1
+                        if (hr! >= 24) {
+                            hr = hr! - 24
+                        }
+                    }
+                    dateInfo.hour = hr
+                    dateInfo.minute = min
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+                    let warningRequest = UNNotificationRequest(identifier: identifier + "NEW", content: notification, trigger: trigger)
+                    
+                    UNUserNotificationCenter.current().add(warningRequest) { (error : Error?) in
+                        if let theError = error {
+                            print(theError.localizedDescription)
+                        }
+                    }
+                }
+            }
+            else if response.actionIdentifier == "DISMISS" {
+                // Invalidate the timer. . .
+            }
+        }
+        
+        // Else handle actions for other notification types. . .
+    }
+
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

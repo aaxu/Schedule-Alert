@@ -38,6 +38,7 @@ class EventCellTableViewCell: UITableViewCell {
         event!.eventON = false
         for x in 1...7 {
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(event?.eventName.text!)! + (event?.eventDetails.text)! + String(x)])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(event?.eventName.text!)! + (event?.eventDetails.text)! + String(x) + "warning"])
         }
     }
     func turningAlarmOn(cell: EventCellTableViewCell, sender: UISwitch) {
