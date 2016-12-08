@@ -5,13 +5,13 @@
   
 ### Never miss an event again! 
 This app is similar to an alarm clock. When an event is close the app will 
-remind you that you need to get going! It will send you many reminders with
-increasing intensity until it is dismissed. 
+remind you that you need to get going! It will continually send you reminders
+until the alarm is dismissed.
 
 ### Features 
-  * When an event is close (default is 30 min and adjustable), the phone will
-  vibrate and an alert will appear on the screen. If the phone is locked, the
-  app will wake up the screen and display the alert along with a vibration.
+  * When an event is within 30 minutes, the phone will
+  give a notification that will appear on the screen. If the phone is locked, the
+  app will wake up the screen and display the alert.
   
   * If the alert is not dismissed, as the time gets closer to the event, the
   duration and the intensity of the vibration will increase. When there are 
@@ -22,8 +22,7 @@ increasing intensity until it is dismissed.
   multiple alarms (with the ability to go off on selected days of the week
   at specific times).
   
-  * There will also be a weekly schedule calendar view where you can get an
-  overview of where all the alarms are set on which days of the week.
+  * On each alarm, there is a switch to turn the alarm on and off.
   
   * Each alarm can have a description added to it to show what it's for.
  
@@ -34,15 +33,12 @@ increasing intensity until it is dismissed.
   * Tapping an event on this screen will allow the user to change its
   settings.
   
-  * On the top left, there will be a button that allows the user
-  to see the weekly schedule calendar view with all the alarms set.
-  
-  * Clicking on a day in the calendar will show in a view similar
-  to the initial screen where all the alarms for that day are listed
-  Editing and adding alarms in this view is possible.
-  
   * On the top right, there will be a button that allows the user
   to add a new task and set the time when it will go off and other settings.
+  
+  * There will be a button that allows you to select your alarm tone. When 
+  clicked, the view will go to TableViewController that displays a list of 
+  available ringtones to select from.
   
   * After adding a new alarm, the view will unwind and user will go back
   to the screen they were in before.
