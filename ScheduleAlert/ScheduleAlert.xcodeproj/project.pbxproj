@@ -16,7 +16,6 @@
 		5188C1CB1DF66B430011A529 /* ScheduleAlertUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C1CA1DF66B430011A529 /* ScheduleAlertUITests.swift */; };
 		5188C1D91DF66BAA0011A529 /* ScheduleAlertListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C1D81DF66BAA0011A529 /* ScheduleAlertListTableViewController.swift */; };
 		5188C1DB1DF66BDC0011A529 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C1DA1DF66BDC0011A529 /* AddEventViewController.swift */; };
-		5188C1DD1DF66BFC0011A529 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C1DC1DF66BFC0011A529 /* CalendarCollectionViewController.swift */; };
 		5188C1DF1DF75F200011A529 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C1DE1DF75F1E0011A529 /* Line.swift */; };
 		5188C1E11DF7B20F0011A529 /* SelectRingtoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C1E01DF7B20F0011A529 /* SelectRingtoneTableViewController.swift */; };
 		5188C1E31DF7E29C0011A529 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5188C1E21DF7E29C0011A529 /* Event.swift */; };
@@ -56,7 +55,6 @@
 		5188C1CC1DF66B430011A529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5188C1D81DF66BAA0011A529 /* ScheduleAlertListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleAlertListTableViewController.swift; sourceTree = "<group>"; };
 		5188C1DA1DF66BDC0011A529 /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
-		5188C1DC1DF66BFC0011A529 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
 		5188C1DE1DF75F1E0011A529 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		5188C1E01DF7B20F0011A529 /* SelectRingtoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRingtoneTableViewController.swift; sourceTree = "<group>"; };
 		5188C1E21DF7E29C0011A529 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				5188C1E21DF7E29C0011A529 /* Event.swift */,
 				5188C1DA1DF66BDC0011A529 /* AddEventViewController.swift */,
 				5188C1DE1DF75F1E0011A529 /* Line.swift */,
-				5188C1DC1DF66BFC0011A529 /* CalendarCollectionViewController.swift */,
 				5188C1B11DF66B420011A529 /* Assets.xcassets */,
 				5188C1B31DF66B420011A529 /* LaunchScreen.storyboard */,
 				5188C1B61DF66B420011A529 /* Info.plist */,
@@ -283,7 +280,6 @@
 				5188C1E31DF7E29C0011A529 /* Event.swift in Sources */,
 				5188C1AD1DF66B420011A529 /* ViewController.swift in Sources */,
 				5188C1DB1DF66BDC0011A529 /* AddEventViewController.swift in Sources */,
-				5188C1DD1DF66BFC0011A529 /* CalendarCollectionViewController.swift in Sources */,
 				5188C1E11DF7B20F0011A529 /* SelectRingtoneTableViewController.swift in Sources */,
 				5188C1DF1DF75F200011A529 /* Line.swift in Sources */,
 				5188C1D91DF66BAA0011A529 /* ScheduleAlertListTableViewController.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import AudioToolbox
 
 class ScheduleAlertListTableViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
@@ -16,8 +17,6 @@ class ScheduleAlertListTableViewController: UITableViewController, UNUserNotific
     }
     
     @IBOutlet weak var goToAddEventButton: UIBarButtonItem!
-    
-    @IBOutlet weak var goToCalendarButton: UIBarButtonItem!
     
     let center = UNUserNotificationCenter.current()
     var editingCellIndex = -1
