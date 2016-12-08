@@ -25,7 +25,7 @@ class SelectRingtoneTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        ringtones = [(1000, "new-mail"), (1001, "mail-sent"), (1020, "Anticipate"), (1021, "Bloom")]
+        ringtones = [(1000, "new-mail"), (1001, "mail-sent"), (1020, "Anticipate"), (1021, "Bloom"), (1005, "alarm"), (1022, "Calpyso"), (1023, "Choo_Choo"), (1024, "Descent"), (1025, "Fanfare"), (1026, "Ladder"), (1027, "Minuet"), (1028, "News_Flash"), (1029, "Noir"), (1030, "Sherwood_Forest"), (1031, "Spell"), (1032, "Suspense"), (1033, "Telegraph"), (1034, "Tiptoes"), (1035, "Typewriters")]
         selectedRingtone = (4095, "Vibrate")
     }
 
@@ -43,7 +43,7 @@ class SelectRingtoneTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return ringtones.count
     }
 
     
