@@ -17,9 +17,10 @@ until the alarm is dismissed.
   duration and the intensity of the vibration will increase. When there are 
   5 minutes remaining, an alarm will sound and the phone will
   vibrate continually until dismissed or 10 minutes have passed.
+  
   **Due to Swift limitations, the vibration modifications and continuous alerts
   were not able to be implemented. Currently, the app sends notifications every 5
-  minutes. **
+  minutes.**
   
   * The app itself functions essentially like an alarm and you can set
   multiple alarms (with the ability to go off on selected days of the week
